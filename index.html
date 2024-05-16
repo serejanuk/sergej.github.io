@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Школа "Школа С. Янюка"</title>
+
+    <style>
+
+        /* Общие стили */
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #f9f9f9;
+
+        }
+
+
+
+        /* Стили для навигационной панели */
+
+        nav {
+
+            background-color: #4CAF50;
+
+            color: #fff;
+
+            padding: 10px 0;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+
+        nav ul {
+
+            list-style-type: none;
+
+            margin: 0;
+
+            padding: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+
+
+        nav ul li {
+
+            margin-right: 20px;
+
+            cursor: pointer;
+
+        }
+
+
+
+        nav ul li a {
+
+            color: #fff;
+
+            text-decoration: none;
+
+            padding: 10px 15px;
+
+            display: block;
+
+        }
+
+
+
+        nav ul li a:hover {
+
+            background-color: #45a049;
+
+            border-radius: 5px;
+
+        }
+
+
+
+        /* Адаптивная сетка */
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 20px auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            grid-gap: 20px;
+
+            padding: 0 20px;
+
+        }
+
+
+
+        /* Стили для разделов */
+
+        .section {
+
+            background-color: #fff;
+
+            padding: 20px;
+
+            border-radius: 5px;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+
+        /* Стили для скрытия и отображения разделов */
+
+        .hidden {
+
+            display: none;
+
+        }
+
+
+
+        /* Эффект к заголовкам */
+
+        h1, h2 {
+
+            color: #333;
+
+            transition: color 0.3s ease;
+
+        }
+
+
+
+        h1:hover, h2:hover {
+
+            color: #ff6347;
+
+        }
+
+
+
+        /* Стили для модального окна */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 1;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: auto;
+
+            background-color: rgba(0,0,0,0.4);
+
+            padding-top: 60px;
+
+        }
+
+
+
+        .modal-content {
+
+            background-color: #fefefe;
+
+            margin: 5% auto;
+
+            padding: 20px;
+
+            border: 1px solid #888;
+
+            width: 80%;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            border-radius: 10px;
+
+        }
+
+
+
+        .close {
+
+            color: #aaa;
+
+            float: right;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .close:hover,
+
+        .close:focus {
+
+            color: black;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* Стили для изображения с эффектом наведения */
+
+        .image-container {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin: 20px 0;
+
+        }
+
+
+
+        .image-container img {
+
+            max-width: 100%;
+
+            height: auto;
+
+            border-radius: 10px;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+
+
+        .image-container img:hover {
+
+            transform: scale(1.05);
+
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        }
+
+        /* Bordered form */
+
+form {
+
+  border: 3px solid #f1f1f1;
+
+}
+
+
+
+/* Full-width inputs */
+
+input[type=text], input[type=password] {
+
+  width: 100%;
+
+  padding: 12px 20px;
+
+  margin: 8px 0;
+
+  display: inline-block;
+
+  border: 1px solid #ccc;
+
+  box-sizing: border-box;
+
+}
+
+
+
+/* Set a style for all buttons */
+
+button {
+
+  background-color: #04AA6D;
+
+  color: white;
+
+  padding: 14px 20px;
+
+  margin: 8px 0;
+
+  border: none;
+
+  cursor: pointer;
+
+  width: 100%;
+
+}
+
+
+
+/* Add a hover effect for buttons */
+
+button:hover {
+
+  opacity: 0.8;
+
+}
+
+
+
+/* Extra style for the cancel button (red) */
+
+.cancelbtn {
+
+  width: auto;
+
+  padding: 10px 18px;
+
+  background-color: #f44336;
+
+}
+
+
+
+/* Center the avatar image inside this container */
+
+.imgcontainer {
+
+  text-align: center;
+
+  margin: 24px 0 12px 0;
+
+}
+
+
+
+
+
+/* Add padding to containers */
+
+.container {
+
+  padding: 16px;
+
+}
+
+
+
+/* The "Forgot password" text */
+
+span.psw {
+
+  float: right;
+
+  padding-top: 16px;
+
+}
+
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+
+  span.psw {
+
+    display: block;
+
+    float: none;
+
+  }
+
+  .cancelbtn {
+
+    width: 100%;
+
+  }
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <ul id="menu">
+
+            <li id="home"><a href="#">Главная</a></li>
+
+            <li id="about"><a href="#">О нас</a></li>
+
+            <li id="contacts"><a href="#">Контакты</a></li>
+
+            <li id="login"><a href="#" onclick="openModal()">Вход / Регистрация</a></li>
+
+        </ul>
+
+    </nav>
+
+    <div class="container">
+
+        <div id="homeSection" class="section">
+
+            <h1>Школа "Школа С. Янюка"</h1>
+
+            <p>Добро пожаловать на сайт нашей школы! Здесь вы можете найти информацию о нашей школе, ее миссии и обучающих программах.</p>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <a href="https://www.instagram.com/my_european_school?igsh=MTdhMHg3dTlyemlicw%3D%3D">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/800px-Instagram_icon.png" height="60" width="60">
+
+        </a>
+
+        </div>
+
+        <div id="aboutSection" class="section hidden">
+
+            
+
+            <h2>О нас</h2>
+
+            <p>Школа "Школа С. Янюка" - это современное образовательное учреждение, которое стремится обеспечить высококачественное образование и развитие каждого ученика, подготовив его к успешной будущей карьере и активной жизни в обществе.</p>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <a href="https://www.instagram.com/my_european_school?igsh=MTdhMHg3dTlyemlicw%3D%3D">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/800px-Instagram_icon.png" height="60" width="60">
+
+        </a>
+
+        </div>
+
+        <div id="contactsSection" class="section hidden">
+
+            <h2>Контакты</h2>
+
+            <p>Адрес: ул. Примерная, д. 123</p>
+
+            <p>Телефон: +380 (123) 456-78-90</p>
+
+            <p>Email: serega672@gmail.com</p>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <a href="https://www.instagram.com/my_european_school?igsh=MTdhMHg3dTlyemlicw%3D%3D">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/800px-Instagram_icon.png" height="60" width="60">
+
+        </a>
+
+        
+
+        </div>
+
+        <div class="image-container">
+
+            <img src="https://www.school17.ck.ua/wp-content/uploads/2023/02/photo_2023-02-08_11-22-43.jpg" alt="Фото школы">
+
+        </div>
+
+    </div>
+
+
+
+<!-- Модальное окно -->
+
+    <div id="myModal" class="modal">
+
+        <!-- Контент модального окна -->
+
+        <div class="modal-content">
+
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2>Вход / Регистрация</h2>
+
+            <!-- Здесь можно добавить форму для входа и регистрации -->
+
+            <form action="" method="post">
+
+                <div class="imgcontainer">
+
+                
+
+                </div>
+
+              
+
+                <div class="container">
+
+                  <label for="uname"><b>Имя пользователя</b></label>
+
+                  <input type="text" placeholder="Введите имя пользователя" name="uname" required>
+
+                  <br>
+
+                  <br>
+
+                  <br>
+
+                  <label for="psw"><b>Пароль</b></label>
+
+                  <input type="password" placeholder="Введите пароль" name="psw" required>
+
+                  <br>
+
+                  <br>
+
+                  <br>
+
+                  <button type="submit">Войти</button>
+
+                  <label>
+
+                    <br>
+
+                    <input type="checkbox" checked="checked" name="remember"> Запомнить пароль
+
+                  </label>
+
+                </div>
+
+              
+
+                <div class="container" style="background-color:#f1f1f1">
+
+                  <button type="button" class="cancelbtn">Отмена</button>
+
+                  <span class="psw">Забыли <a href="#">пароль?</a></span>
+
+                </div>
+
+              </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        const menuItems = document.querySelectorAll('#menu li');
+
+        const sections = document.querySelectorAll('.section');
+
+
+
+        menuItems.forEach((item, index) => {
+
+            item.addEventListener('click', () => {
+
+                // Скрываем все разделы
+
+                sections.forEach(section => section.classList.add('hidden'));
+
+                // Отображаем выбранный раздел
+
+                sections[index].classList.remove('hidden');
+
+            });
+
+        });
+
+
+
+        // Функция для открытия модального окна
+
+        function openModal() {
+
+            const modal = document.getElementById('myModal');
+
+            modal.style.display = 'block';
+
+        }
+
+
+
+        // Функция для закрытия модального окна
+
+        function closeModal() {
+
+            const modal = document.getElementById('myModal');
+
+            modal.style.display = 'none';
+
+        }
+
+    </script>
+
+</body>
+
+</html>
